@@ -165,13 +165,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: Setup parameters file
-        shell: bash
-        env:
-          PARAMETERS_SECRET: ${{ secrets.PARAMETERS_SECRET }}
-        run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="$PARAMETERS_SECRET" \
-          .github/workflows/parameters/public/parameters_${{ matrix.cloud-provider }}.py.gpg > test/parameters.py
+      #- name: Setup parameters file
+        #shell: bash
+        #env:
+          #PARAMETERS_SECRET: ${{ secrets.PARAMETERS_SECRET }}
+        #run: |
+          #gpg --quiet --batch --yes --decrypt --passphrase="$PARAMETERS_SECRET" \
+          #.github/workflows/parameters/public/parameters_${{ matrix.cloud-provider }}.py.gpg > test/parameters.py
       - name: Download wheel(s)
         uses: actions/download-artifact@v2
         with:
